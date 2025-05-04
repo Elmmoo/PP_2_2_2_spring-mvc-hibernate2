@@ -1,0 +1,27 @@
+
+<form th:action="@{/add}" method="post">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="number" name="age" placeholder="Age" required>
+  <button type="submit">Add User</button>
+</form>
+
+
+<table>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.age}"></td>
+    <td>
+
+      <form th:action="@{/update}" method="post">
+        <input type="hidden" name="id" th:value="${user.id}">
+        <input type="text" name="name" th:value="${user.name}">
+        <input type="number" name="age" th:value="${user.age}">
+        <button type="submit">Update</button>
+      </form>
+
+
+      <a th:href="@{/delete(id=${user.id})}">Delete</a>
+    </td>
+  </tr>
+</table>
