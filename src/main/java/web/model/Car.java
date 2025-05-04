@@ -13,17 +13,20 @@ public class Car {
 
     // Геттеры и сеттеры для полей
 
-    public String getBrand() { return brand; }
+    public String getBrand() {
+        return brand; }
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
-    public String getModel() { return model; }
+    public String getModel() {
+        return model; }
     public void setModel(String model) {
         this.model = model;
     }
 
-    public int getYearOfProduction() { return yearOfProduction; }
+    public int getYearOfProduction() {
+        return yearOfProduction; }
     public void setYearOfProduction(int yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }

@@ -3,9 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Автомобили</title>
+  <style>
+    .pagination a {
+      margin: 0 5px;
+      text-decoration: none;
+    }
+    {
+      font-weight: bold;
+      color: red;
+    }
+  </style>
 </head>
 <body>
 <h1>Список автомобилей:</h1>
+
+
+<div class="pagination">
+  <span>Показать: </span>
+
+
+  <a th:each="i : ${#numbers.sequence(1, 4)}"
+     th:href="@{/cars(count=${i})}"
+     th:classappend="${i == currentCount} ? 'active'"
+     th:text="${i}"></a>
+
+
+  <a th:href="@{/cars(count=5)}"
+     th:classappend="${5 == currentCount} ? 'active'">Все</a>
+</div>
+
 <table border="1">
   <tr>
     <th>Марка</th>
