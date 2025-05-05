@@ -4,7 +4,7 @@ import web.model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getAll();
-    void save(User user);
-    void delete(Long id);
+    List<User> retrieveAllUsers();
+    void registerOrModifyUser(User user);
+    void eraseUser(Long id);
 }

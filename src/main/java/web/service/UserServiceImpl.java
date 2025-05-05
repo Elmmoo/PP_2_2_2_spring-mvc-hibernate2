@@ -3,7 +3,7 @@ package web.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
-import web.repository.UserRepository;
+import web.dao.UserRepository;
 
 import java.util.List;
 
@@ -17,20 +17,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
-    public List<User> getAll() {
-        return userRepository.getAll();
+    @Transactional(readOnly = true)
+    public List<User> retrieveAllUsers() {
+        return userRepository.findAllUsers();
     }
 
     @Override
     @Transactional
-    public void save(User user) {
-        userRepository.save(user);
+    public void registerOrModifyUser(User user) {
+        userRepository.insertOrUpdateUser(user);
     }
 
     @Override
     @Transactional
-    public void delete(Long id) {
-        userRepository.delete(id);
+    public void eraseUser(Long id) {
+        userRepository.removeUser(id);
     }
 }

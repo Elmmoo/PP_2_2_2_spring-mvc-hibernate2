@@ -1,4 +1,4 @@
-package web.repository;
+package web.dao;
 
 import org.springframework.stereotype.Repository;
 import web.model.User;
@@ -14,23 +14,25 @@ public class UserRepositoryImpl implements UserRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<User> getAll() {
-        return entityManager.createQuery("from User", User.class).getResultList();
+    public List<User> findAllUsers() {
+        return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
     @Override
-    public void save(User user) {
+    public void insertOrUpdateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
-    public User getById(Long id) {
+    public User fetchUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void delete(Long id) {
+    public void removeUser(Long id) {
         User user = entityManager.find(User.class, id);
-        entityManager.remove(user);
+        if (user != null) {
+            entityManager.remove(user);
+        }
     }
 }
